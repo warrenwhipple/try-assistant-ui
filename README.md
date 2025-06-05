@@ -2,11 +2,22 @@ This is the [assistant-ui](https://github.com/Yonom/assistant-ui) starter projec
 
 ## Getting Started
 
-First, add your OpenAI API key to `.env.local` file:
+### Option 1: With OpenAI API Key (Full AI Features)
+
+Add your OpenAI API key to `.env.local` file:
 
 ```
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+### Option 2: Without API Key (Mock Responses)
+
+The app will automatically use mock AI responses when no OpenAI API key is found. This is perfect for:
+- Testing the UI without incurring API costs
+- Deploying to Vercel without exposing API keys
+- Development environments where you don't need real AI responses
+
+### Running the Development Server
 
 Then, run the development server:
 
