@@ -2,11 +2,14 @@ This is the [assistant-ui](https://github.com/Yonom/assistant-ui) starter projec
 
 ## Getting Started
 
-First, add your OpenAI API key to `.env.local` file:
+First, add your OpenAI API key to `.env.local` file (optional):
 
 ```
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+If no `OPENAI_API_KEY` is provided, the `/api/chat` endpoint returns a mock
+response so the UI can still be tested without connecting to OpenAI.
 
 Then, run the development server:
 
