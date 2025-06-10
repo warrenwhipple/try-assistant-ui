@@ -80,5 +80,7 @@ This is an [assistant-ui](https://github.com/Yonom/assistant-ui) starter project
 - `/app/assistant.tsx`: Main assistant setup and runtime configuration
 - `/app/api/chat/route.ts`: Chat API endpoint with AI SDK integration
 - `/components/assistant-ui/thread.tsx`: Core chat UI implementation
+- `/components/app-header.tsx`: Extracted header component with navigation and auth
+- `/components/app-sidebar.tsx`: Sidebar component for navigation
 - `/app/layout.tsx`: Root layout with ClerkProvider and auth components
 - `/middleware.ts`: Clerk middleware for route protection
