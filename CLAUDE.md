@@ -34,7 +34,12 @@ pnpm up:latest  # Latest versions
 ### Environment Setup
 Create a `.env.local` file with:
 ```
+# OpenAI API key for chat functionality
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CLERK_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## High-Level Architecture
@@ -49,6 +54,10 @@ This is an [assistant-ui](https://github.com/Yonom/assistant-ui) starter project
    - `AssistantRuntimeProvider` for runtime context
    - `useChatRuntime` hook with AI SDK integration
    - Stream-based responses for real-time chat
+4. **Authentication**: Clerk authentication integrated with:
+   - `clerkMiddleware()` in `/middleware.ts` for protecting routes
+   - `<ClerkProvider>` wrapping the app in `/app/layout.tsx`
+   - Auth UI components (SignIn/SignUp/UserButton) in the header
 
 ### Component Structure
 
@@ -71,4 +80,5 @@ This is an [assistant-ui](https://github.com/Yonom/assistant-ui) starter project
 - `/app/assistant.tsx`: Main assistant setup and runtime configuration
 - `/app/api/chat/route.ts`: Chat API endpoint with AI SDK integration
 - `/components/assistant-ui/thread.tsx`: Core chat UI implementation
-- `/app/layout.tsx`: Root layout with sidebar and theme setup
+- `/app/layout.tsx`: Root layout with ClerkProvider and auth components
+- `/middleware.ts`: Clerk middleware for route protection
