@@ -26,9 +26,9 @@ export class VercelKVThreadStorage {
     return threads || [];
   }
 
-  async createThread(title: string): Promise<StoredThread> {
+  async createThread(title: string, id?: string): Promise<StoredThread> {
     const thread: StoredThread = {
-      id: crypto.randomUUID(),
+      id: id || crypto.randomUUID(),
       title,
       status: 'regular',
       createdAt: Date.now(),
