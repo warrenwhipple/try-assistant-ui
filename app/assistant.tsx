@@ -19,10 +19,10 @@ export const Assistant = () => {
     <AssistantRuntimeProvider runtime={runtime}>
       <SidebarProvider>
         <AppSidebar />
-        <SidebarInset>
+        <SidebarInset className="flex flex-col h-screen">
           <AppHeader />
           {isLoaded && !isSignedIn ? (
-            <div className="flex items-center justify-center h-full">
+            <div className="flex items-center justify-center flex-1">
               <SignIn fallbackRedirectUrl="/" routing="hash" />
             </div>
           ) : (

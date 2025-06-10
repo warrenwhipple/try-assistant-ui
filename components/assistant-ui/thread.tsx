@@ -26,12 +26,12 @@ import { ToolFallback } from "./tool-fallback";
 export const Thread: FC = () => {
   return (
     <ThreadPrimitive.Root
-      className="bg-background box-border flex h-full flex-col overflow-hidden"
+      className="bg-background box-border flex flex-col flex-1 overflow-hidden"
       style={{
         ["--thread-max-width" as string]: "42rem",
       }}
     >
-      <ThreadPrimitive.Viewport className="flex h-full flex-col items-center overflow-y-scroll scroll-smooth bg-inherit px-4 pt-8">
+      <ThreadPrimitive.Viewport className="flex flex-1 flex-col items-center overflow-y-scroll scroll-smooth bg-inherit px-4 pt-8 pb-4">
         <ThreadWelcome />
 
         <ThreadPrimitive.Messages
@@ -45,12 +45,14 @@ export const Thread: FC = () => {
         <ThreadPrimitive.If empty={false}>
           <div className="min-h-8 flex-grow" />
         </ThreadPrimitive.If>
-
-        <div className="sticky bottom-0 mt-3 flex w-full max-w-[var(--thread-max-width)] flex-col items-center justify-end rounded-t-lg bg-inherit pb-4">
-          <ThreadScrollToBottom />
+      </ThreadPrimitive.Viewport>
+      
+      <div className="relative flex w-full flex-col items-center justify-end bg-inherit px-4 pb-4">
+        <ThreadScrollToBottom />
+        <div className="w-full max-w-[var(--thread-max-width)]">
           <Composer />
         </div>
-      </ThreadPrimitive.Viewport>
+      </div>
     </ThreadPrimitive.Root>
   );
 };
@@ -61,7 +63,7 @@ const ThreadScrollToBottom: FC = () => {
       <TooltipIconButton
         tooltip="Scroll to bottom"
         variant="outline"
-        className="absolute -top-8 rounded-full disabled:invisible"
+        className="absolute -top-12 rounded-full disabled:invisible"
       >
         <ArrowDownIcon />
       </TooltipIconButton>
