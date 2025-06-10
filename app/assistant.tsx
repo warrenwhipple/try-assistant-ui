@@ -18,8 +18,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useUser, SignInButton } from "@clerk/nextjs";
 
 export const Assistant = () => {
+  const { isSignedIn, isLoaded } = useUser();
+  
   const runtime = useChatRuntime({
     api: "/api/chat",
   });
@@ -46,7 +49,20 @@ export const Assistant = () => {
               </BreadcrumbList>
             </Breadcrumb>
           </header>
-          <Thread />
+          {isLoaded && !isSignedIn ? (
+            <div className="flex flex-col items-center justify-center h-full gap-4">
+              <p className="text-lg text-muted-foreground">
+                Please sign in to use the assistant
+              </p>
+              <SignInButton mode="modal">
+                <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90">
+                  Sign In
+                </button>
+              </SignInButton>
+            </div>
+          ) : (
+            <Thread />
+          )}
         </SidebarInset>
       </SidebarProvider>
     </AssistantRuntimeProvider>
