@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   const { messages, system, tools } = await req.json();
 
   const result = streamText({
-    model: openai("gpt-4o"),
+    model: openai("gpt-3.5-turbo"),
     messages,
     toolCallStreaming: true,
     system,
